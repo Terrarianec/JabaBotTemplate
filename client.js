@@ -11,7 +11,7 @@ const commandFolder = "./commands",
         Collection, // https://discord.js.org/#/docs/collection/main/class/Collection
         Intents // https://discord.js.org/#/docs/discord.js/stable/class/Intents
     } = require("discord.js"), // https://discord.js.org/#/docs/discord.js/stable/general/welcome
-    { readdir } = require("node:fs"), // https://nodejs.org/api/fs.html
+    { readdirSync } = require("node:fs"), // https://nodejs.org/api/fs.html
     {
         intents, // [ "GUILDS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INTEGRATIONS", "GUILD_WEBHOOKS", "GUILD_INVITES", "GUILD_VOICE_STATES", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGE_TYPING", "DIRECT_MESSAGES", "DIRECT_MESSAGE_REACTIONS", "DIRECT_MESSAGE_TYPING", "GUILD_MEMBERS" ]
         token // "OTc5Mzc4MTkyNTQyNDk0NzI0.GsSeIz.Rm_Gki87aVjCL28eGKMcHdqYvP7zz0yX_5JjIo"
@@ -21,7 +21,7 @@ client.commands = new Collection();
 
 // https://learn.javascript.ru/function-basics
 function loadJSfilesFromDirectory(directory) {
-    return readdir(directory, (err, files) => { // https://learn.javascript.ru/arrow-functions-basics
+    return readdirSync(directory, (err, files) => { // https://learn.javascript.ru/arrow-functions-basics
         if (err) console.error(err);
         else return files ? files.filter((file) => file.endsWith(".js")) : []; // https://learn.javascript.ru/string#includes-startswith-endswith
     });
