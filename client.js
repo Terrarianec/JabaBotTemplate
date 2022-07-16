@@ -31,7 +31,6 @@ function loadJSfilesFromDirectory(directory) {
 const commandFileNames = loadJSfilesFromDirectory(commandFolder),
     eventFileNames = loadJSfilesFromDirectory(eventFolder);
 
-
 for (let i = 0; i < commandFileNames; i++) { // https://learn.javascript.ru/array#perebor-elementov
     const commandFileName = commandFileNames[i],
         commandFile = require(`${commandFolder}/${commandFileName}`), // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Template_literals#%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%BF%D0%BE%D0%BB%D1%8F%D1%86%D0%B8%D1%8F_%D0%B2%D1%8B%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9
@@ -48,6 +47,7 @@ for (let i = 0; i < eventFileNames.length; i++) {
         */
         eventHandler = require(`${eventFolder}/${eventFileName}`),
         [
+            , // Нулевой элемент - вся совпавшая подстрока
             once, // Одноразовый ли слушатель
             eventName // Имя события клиента 
         ] = eventFileName.match(/(_)?(\w+).js/i); // https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Regular_Expressions // Часто пользовать регулярными выражениями не рекомендуется
